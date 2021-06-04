@@ -1,6 +1,11 @@
 use std::mem;
 
-fn main(){
+const CURRENT_DEB:u8 = 42; //no fixed address
+//se acostumbra a usar mas const que static
+static STATICVAR:i32 = 123;
+static mut STATICVAR2:i32 = 123;
+
+fn data_types(){
     println!("Hello World from Rust");
     let a:u8 = 123; //unsigned (no puede ser negativo) 8 bits == 1 byte
     println!("a = {}", a);
@@ -67,4 +72,23 @@ fn operators(){
     let x = 5;
     let x_is_5 = x == 5; //true
 
+}
+
+fn scope_and_shadowing(){
+    let a = 123;    
+    //inner scope definition
+    {
+        let b = 456;
+        println!("from inside, b = {}", b);
+        let a = 777;
+        println!("from inside, a = {}", a);
+    }
+    println!("outside a = {}", a);
+
+}
+
+fn main(){
+    unsafe {
+            println!("{}", STATICVAR2);
+    }
 }
